@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import MainText from "../Components/MainText";
 import Button from "../Components/Button";
-import FeaturesCard from "../Components/FeaturesCard";
 import Result from "../Components/ResultCard";
 import Decide from "../Components/Decide";
 import Testimonial from "../Components/Testimonail";
