@@ -1,20 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import MainText from "../Components/MainText";
 import Button from "../Components/Button";
 import Result from "../Components/ResultCard";
 import Decide from "../Components/Decide";
 import Testimonial from "../Components/Testimonail";
 import Prayers from "../Components/Prayers";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Form from "../Components/FormModal";
 const user = JSON.parse(localStorage.getItem('user'));
 
 const Home = () => {
-    const [modal,setModal] = useState(false);
-    const modalForm = () =>{
-        setModal(!modal);
-    }
-    
     return (
         <main className="main">
             <section className="section hero">
@@ -24,12 +17,12 @@ const Home = () => {
                             <MainText purpleText={'Having life challenges?'} heading={'Prayer Changes Things '} paragraph={'Take a moment to pray for someone or submit a prayer request so that people all over the world can pray for you.'}  />
                             {user ? (
                                 <div className="btn-row">
-                                    <Button btnClass={'purple'} btnText={'Pray'} handle={modalForm} link={'/prayer'}  />
+                                    <Button btnClass={'purple'} btnText={'Pray'} link={'/prayer'}  />
                                     <Button btnClass={'white'} btnText={'Testimony'} link={'/dash'} />
                                 </div>
                             ) : (
                                 <div className="btn-row">
-                                    <Button btnClass={'purple'} btnText={'Submit Prayer Request'} handle={modalForm} link={'/prayer'}  />
+                                    <Button btnClass={'purple'} btnText={'Submit Prayer Request'} link={'/prayer'}  />
                                     <Button btnClass={'white'} btnText={'Pray For Someone'} link={'/dash'}  />
                                 </div>
                             )}
@@ -132,8 +125,6 @@ const Home = () => {
                     </div>
                 </div>
             </section> */}
-
-            <Form modalToggle={modalForm} modalState={modal}/>
         </main>
     );
 }

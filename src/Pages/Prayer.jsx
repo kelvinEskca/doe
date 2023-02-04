@@ -1,13 +1,14 @@
 import React,{useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import axios from "axios";
+import Form from "../Components/FormModal";
 const Prayer = () => {
     axios.defaults.withCredentials = true;
     const navigate = useNavigate();
     const [subject,setSubject] = useState(null);
     const [prayer,setPrayer] = useState(null);
-    const user = JSON.parse(localStorage.getItem('user'));
-    
+    const user = JSON.parse(localStorage.getItem('user')) || {};
+
     const formData = {
         subject:subject,
         prayer:prayer,
@@ -39,28 +40,36 @@ const Prayer = () => {
 
     return (
         <main className="main">
-            <section className="section auth-section test-section">
-                <div className="wrapper">
-                    <div className="boxes">
-                        <div className="box">
-                            {user && (<h3 className="heading">Dear {user.lname} please submit a prayer</h3>) }
-                            <form action="#" className="form" onSubmit={handleForm}>
-                                <label htmlFor="#">
-                                    <input type="text" name="subject" id="subject" placeholder="Enter Subject" onChange={(e)=>{setSubject(e.target.value)}} />
-                                </label>
 
-                                <label htmlFor="#">
-                                    <textarea name="prayer" id="prayer" cols="30" rows="10" placeholder="Enter Prayer" onChange={(e)=>{setPrayer(e.target.value)}}></textarea>
-                                </label>
+            {user && Object.keys(user).length > 0 ? (
+                <section className="section auth-section test-section">
+                    <div className="wrapper">
+                        <div className="boxes">
+                            <div className="box">
+                                {user && (<h3 className="heading">Dear {user.lname} please submit a prayer</h3>)}
+                                <form action="#" className="form" onSubmit={handleForm}>
+                                    <label htmlFor="#">
+                                        <input type="text" name="subject" id="subject" placeholder="Enter Subject" onChange={(e)=>{setSubject(e.target.value)}} />
+                                    </label>
 
-                                <label htmlFor="#">
-                                    <button>Pray</button>
-                                </label>
-                            </form>
+                                    <label htmlFor="#">
+                                        <textarea name="prayer" id="prayer" cols="30" rows="10" placeholder="Enter Prayer" onChange={(e)=>{setPrayer(e.target.value)}}></textarea>
+                                    </label>
+
+                                    <label htmlFor="#">
+                                        <button>Pray</button>
+                                    </label>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            ) : (
+                <Form/>
+            )}
+            
+
+            
         </main>
     );
 }

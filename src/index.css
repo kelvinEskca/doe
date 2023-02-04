@@ -32,7 +32,7 @@ header,main,footer,section,div,form,label,input,span,nav,aside,textarea{
 }
 
 main{
-    padding-top: 4rem;
+    padding-top: 5.5rem;
 }
 
 section{
@@ -80,6 +80,11 @@ button{
   border: none;
   border-radius: .5rem;
   cursor: pointer;
+  transition: background-color .4s ease-in-out;
+}
+
+button:hover{
+    background-color: #0b0a1e;
 }
 
 .main-text{
@@ -618,6 +623,10 @@ header{
 
 .mobile li{
     margin-bottom: 1rem;
+    font-weight: 500;
+    font-size: .9rem;
+    color: #0b0a1e;
+    cursor: pointer;
 }
 
 .mobile ul{
@@ -690,15 +699,14 @@ header{
 }
 
 .auth-section{
-    position: fixed;
+    position: relative;
     height: 100%;
     top: 0;
     left: 0;
-    background-color: #191919b7;;
+    background-color: #fff;;
     backdrop-filter: blur(10px);
     border-top: 1px solid #929294;
-    display: none;
-    z-index: 11;
+    display: flex;
 }
 
 .test-section{
@@ -717,9 +725,6 @@ header{
     cursor: pointer;
 }
 
-.open{
-    display: flex;
-}
 
 .auth-section .wrapper{
     overflow-y: auto;
@@ -735,6 +740,10 @@ header{
     align-items: center;
     justify-content: center;
     max-width: 500px;
+}
+
+.row-auth .boxes{
+    max-width: 100%;
 }
 
 .auth-section input,.auth-section select,.auth-section textarea{
@@ -836,6 +845,67 @@ header{
 
 .prayer .slick-next, .prayer .slick-prev,.testimonial .slick-next,.testimonial .slick-prev{
     display: none !important;
+}
+
+.row-auth{
+    height: 100vh;
+    background-color: #fff;
+}
+
+.profile .top{
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #363646;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.profile .top .heading{
+    margin: 0;
+}
+
+.profile .top a{
+    width: auto;
+}
+
+.profile .top button{
+    width: 8rem;
+    background-color: #7750f6;
+    color: #fff;
+    font-weight: 501;
+    font-size: .8rem;
+}
+
+.profile .boxes{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 300px));
+    gap: 1rem;
+}
+
+.profile .boxes .box{
+    background-color: #7750f6;
+    padding: 1rem;
+    border-radius: .3rem;
+    min-height: 10rem;
+    cursor: pointer;
+    transition: background-color .4s ease-in-out;
+}
+
+.profile .boxes .box:hover{
+    background-color: #0b0a1e;
+}
+
+.profile .boxes .box .heading{
+    font-weight: 501;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.profile .boxes .box .paragraph{
+    color: #c8cdd1;
+    font-weight: 600;
 }
 
 @media screen and (min-width:376px){
@@ -942,6 +1012,23 @@ header{
         margin-bottom: 0;
     }
     
+    .row-auth .boxes{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 800px;
+    }
+
+    .row-auth .label-row{
+        width: 100%;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    .row-auth .label-row label{
+        width: 49%;
+    }
 }
 
 @media screen and (min-width:800px){
@@ -1024,14 +1111,19 @@ header{
         width: 150px;
     }
     
-    .desktop a button{
+    .desktop button{
         font-weight: 500;
+        width: 8rem;
     }
 
     .desktop .list{
-        min-width: 280px;
+        min-width: 380px;
         display: flex;
         justify-content: space-between;
+    }
+
+    .desktop .small-list{
+        min-width: 200px;
     }
 
     .desktop .list a{
@@ -1065,6 +1157,10 @@ header{
     .prayer .box,.testimonial .box{
         max-width: 700px;
         margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .prayer .main-text .paragraph{
@@ -1074,6 +1170,11 @@ header{
 
     .prayer .main-text .heading{
         max-width: 80%;
+        text-align: center;
+    }
+
+    .row-auth{
+        height: auto;
     }
 }
 

@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import axios from "axios";
-const Form = ({modalState,modalToggle}) => {
+const Form = () => {
     const navigate = useNavigate();
     const [email,setEmail] = useState(null);
     const [fname,setFname] = useState(null);
@@ -69,10 +69,9 @@ const Form = ({modalState,modalToggle}) => {
     }
 
     return (
-        <section className={`section auth-section ${modalState ? ("open") : ("")}`}>
+        <section className="section auth-section row-auth">
             <div className="wrapper">
                 <div className="boxes">
-                    <h3 className="heading" onClick={modalToggle}>X</h3>
                     <div className="box">
                         <h3 className="heading">Login to submit a prayer</h3>
                         <form action="#" className="form" onSubmit={loginForm}>
@@ -97,13 +96,15 @@ const Form = ({modalState,modalToggle}) => {
                     <div className="box">
                         <h3 className="heading">Register to submit a prayer</h3>
                         <form action="#" className="form" onSubmit={handleForm}>
-                            <label htmlFor="#">
-                                <input type="text" name="fname" id="fname" placeholder="First Name" onChange={(e)=>{setFname(e.target.value)}}/>
-                            </label>
+                            <div className="label-row">
+                                <label htmlFor="#">
+                                    <input type="text" name="fname" id="fname" placeholder="First Name" onChange={(e)=>{setFname(e.target.value)}}/>
+                                </label>
 
-                            <label htmlFor="#">
-                                <input type="text" name="lname" id="lname" placeholder="Last Name" onChange={(e)=>{setLname(e.target.value)}}/>
-                            </label>
+                                <label htmlFor="#">
+                                    <input type="text" name="lname" id="lname" placeholder="Last Name" onChange={(e)=>{setLname(e.target.value)}}/>
+                                </label>
+                            </div>
 
                             <label htmlFor="#">
                                 <input type="email" name="email" id="email" placeholder="Email" onChange={(e)=>{setEmail(e.target.value)}}/>
@@ -362,13 +363,15 @@ const Form = ({modalState,modalToggle}) => {
                                 </select>
                             </label>
 
-                            <label htmlFor="#">
-                                <input type="password" name="password" id="password" placeholder="Password" onChange={(e)=>{setPassword(e.target.value)}}/>
-                            </label>
+                            <div className="label-row">
+                                <label htmlFor="#">
+                                    <input type="password" name="password" id="password" placeholder="Password" onChange={(e)=>{setPassword(e.target.value)}}/>
+                                </label>
 
-                            <label htmlFor="#">
-                                <input type="password" name="password" id="password" placeholder="Confirm Password" onChange={(e)=>{setCpassword(e.target.value)}}/>
-                            </label>
+                                <label htmlFor="#">
+                                    <input type="password" name="password" id="password" placeholder="Confirm Password" onChange={(e)=>{setCpassword(e.target.value)}}/>
+                                </label>
+                            </div>
 
                             <label htmlFor="#">
                                 <button>Submit</button>

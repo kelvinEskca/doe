@@ -5,7 +5,7 @@ import {
   Link,
   Route,
   Outlet,
-  RouterProvider,
+  RouterProvider
 } from "react-router-dom";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
@@ -13,9 +13,11 @@ import Home from "./Pages/Home";
 import Services from "./Pages/Services";
 import Dash from "./Pages/Dash";
 import Prayer from "./Pages/Prayer";
+import Profile from "./Pages/Profile";
 import ProtectedRoute from "./ProtectedRoute";
 import { PrayerProvider } from "./PrayerContext";
 const user = JSON.parse(localStorage.getItem('user'));
+
 
 const App = () => {
   const router = createBrowserRouter(
@@ -27,6 +29,7 @@ const App = () => {
         <Route path="/services" element={<Services />} />
         <Route path="/dash" element={<ProtectedRoute><Dash /></ProtectedRoute>} />
         <Route path="/prayer" element={<ProtectedRoute><Prayer /></ProtectedRoute>} />
+        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
       </Route>
     )
   );
@@ -45,12 +48,23 @@ const Root = () => {
   const handleNav = () => {
     setNav(!nav);
   };
+  
+  const logout = () => {
+    if(user){
+      localStorage.removeItem("user");
+      window.location.assign('/');
+    }
+    else{
+      alert('User not logged in!!');
+    }
+  } 
+
   return (
     <>
       <header>
         <nav className="mobile">
           <div className="top">
-            <h3 className="heading">Logo</h3>
+            <h3 className="heading">Kabash</h3>
             <img
               src="../images/icons8-menu-rounded-60.png"
               alt="menu"
@@ -61,7 +75,7 @@ const Root = () => {
 
           <aside className={`aside ${nav ? "slow" : ""}`}>
             <div className="aside-top">
-              <h3 className="heading">Logo</h3>
+              <h3 className="heading">Kabash</h3>
               <h3 className="heading" onClick={handleNav}>
                 X
               </h3>
@@ -69,11 +83,15 @@ const Root = () => {
             {user ? (
               <ul className="list">
                 <li>
+                  <Link to="/profile">Profile</Link>
+                </li>
+                <li>
                   <Link to="/prayer">Prayer</Link>
                 </li>
                 <li>
                   <Link to="/dash">Testimony</Link>
                 </li>
+                <li onClick={logout}>LogOut</li>
               </ul>
             ) : (
               <ul className="list">
@@ -98,27 +116,27 @@ const Root = () => {
           </aside>
         </nav>
         <nav className="desktop">
-          <h3 className="heading">Logo</h3>
+          <h3 className="heading">Kabash</h3>
           {user ? (
             <>
               <ul className="list">
                 <Link to="/">Home</Link>
                 <Link to="/about">About</Link>
                 <Link to="/services">Services</Link>
+                <Link to="/profile">Profile</Link>
+                <Link to="/prayer">Prayer</Link>
                 <Link to="/dash">Testimony</Link>
               </ul>
-              <Link to="/prayer">
-                <button className="purple">Pray</button>
-              </Link>
+              <button className="purple" onClick={logout}>Log Out</button>
             </>
           ) : (
             <>
-            <ul className="list">
+            <ul className="list small-list">
               <Link to="/">Home</Link>
               <Link to="/about">About</Link>
               <Link to="/services">Services</Link>
             </ul>
-            <Link to="/">
+            <Link to="/prayer">
               <button className="purple">Get Started</button>
             </Link>
             </>
