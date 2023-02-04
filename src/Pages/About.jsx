@@ -5,7 +5,6 @@ import Cards from "../Components/Cards";
 import Result from "../Components/ResultCard";
 import Decide from "../Components/Decide";
 import Testimonial from "../Components/Testimonail";
-import Testimonials from "../Testimonial";
 const About = () => {
     return (
         <main className="main">
@@ -49,14 +48,9 @@ const About = () => {
 
             <section className="section testimonial">
                 <div className="wrapper">
-                    <MainText purpleText={'Your Go to Marketing Agency'} heading={'Super Fast marketing solution '} paragraph={'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae '}  />
+                    <MainText purpleText={'Testimonies'} heading={'Take a look at our amazing testimonies'} paragraph={'Even if I testify about Myself, My testimony is true, for I know where I came from and where I am going; but you do not know where I come from or where I am going'}  />
                     <div className="boxes">
-                        {Testimonials.map((item)=>{
-                            return (
-                                <Testimonial title={item.title} paragraph={item.description} role={item.role} image={item.image} key={item.id}/>
-                            )
-                        })}
-                        
+                        <Testimonial/>
                     </div>
                 </div>
             </section>
