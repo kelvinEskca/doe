@@ -5,6 +5,7 @@ import Cards from "../Components/Cards";
 import Result from "../Components/ResultCard";
 import Decide from "../Components/Decide";
 import Testimonial from "../Components/Testimonail";
+const user = JSON.parse(localStorage.getItem('user'));
 const About = () => {
     return (
         <main className="main">
@@ -12,24 +13,30 @@ const About = () => {
                 <div className="wrapper">
                     <div className="boxes">
                         <div className="box">
-                            <MainText purpleText={'Your Go to Marketing Agency'} heading={'Super Fast marketing solution '} paragraph={'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae '}  />
-                            <div className="btn-row">
-                                <Button btnClass={'purple'} btnText={'Get Started'}  />
-                                <Button btnClass={'white'} btnText={'View Demo'}  />
-                            </div>
+                            <MainText purpleText={'Having life challenges?'} heading={'Prayer Changes Things '} paragraph={'Take a moment to pray for someone or submit a prayer request so that people all over the world can pray for you.'}  />
+                            {user ? (
+                                <div className="btn-row">
+                                    <Button btnClass={'purple'} btnText={'Pray'} link={'/prayer'}  />
+                                    <Button btnClass={'white'} btnText={'Testimony'} link={'/dash'} />
+                                </div>
+                            ) : (
+                                <div className="btn-row">
+                                    <Button btnClass={'purple'} btnText={'Submit Prayer Request'} link={'/prayer'}  />
+                                    <Button btnClass={'white'} btnText={'Pray For Someone'} link={'/dash'}  />
+                                </div>
+                            )}
+                            
                         </div>
 
                         <div className="box image-box">
                             <div className="top-box">
                                 <img src="../images/hero_insta-post-1.png" alt="hero_insta-post-1" />
                             </div>
-                            <img src="../images/portrait-of-cheerful-european-female-with-satisfie-2021-08-31-04-21-52-utc-1-1.png" alt="portrait-of-cheerful-european-female-with-satisfie-2021-08-31-04-21-52-utc-1-1" className="img"/>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <Decide />
 
             <section className="section solutions">
                 <div className="wrapper">
@@ -45,6 +52,8 @@ const About = () => {
                     </div>
                 </div>
             </section>
+
+            <Decide />
 
             <section className="section testimonial">
                 <div className="wrapper">
