@@ -12,7 +12,7 @@ const Profile = () => {
         const getPrayer = async () =>{
             const id = user._id;
             try{
-                const request = await axios.get(`http://localhost:5000/api/prayer/${id}`,{
+                const request = await axios.get(`https://doeclient-production.up.railway.app/api/prayer/${id}`,{
                     id:id
                 });
                 if(request.status === 200){
@@ -32,7 +32,7 @@ const Profile = () => {
         const getTestimony = async () =>{
             const id = user._id;
             try{
-                const request = await axios.get(`http://localhost:5000/api/testimony/${id}`,{
+                const request = await axios.get(`https://doeclient-production.up.railway.app/api/testimony/${id}`,{
                     id:id
                 });
                 if(request.status === 200){

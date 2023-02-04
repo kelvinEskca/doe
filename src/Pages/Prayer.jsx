@@ -20,7 +20,7 @@ const Prayer = () => {
         e.preventDefault();
         if(subject !== null || prayer !== null){
             try{
-                const request = await axios.post('http://localhost:5000/api/prayer/add',formData);
+                const request = await axios.post('https://doeclient-production.up.railway.app/api/prayer/add',formData);
                 if(request.status === 200){
                     alert("Prayer Added Successfully");
                     navigate('/prayer');

@@ -18,7 +18,7 @@ const Testimonial = ({image,title,paragraph,reviews,role}) => {
     useEffect(() => {
         const grabPrayer = async () =>{
             try {
-                const request = await axios.get('http://localhost:5000/api/testimony');
+                const request = await axios.get('https://doeclient-production.up.railway.app/api/testimony');
                 if(request.status === 200){
                     setTestimonials(request.data);
                 }

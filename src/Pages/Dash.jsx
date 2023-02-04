@@ -19,7 +19,7 @@ const Dash = () => {
         e.preventDefault();
         if(subject !== null || testimony !== null){
             try{
-                const request = await axios.post('http://localhost:5000/api/testimony/add',formData);
+                const request = await axios.post('https://doeclient-production.up.railway.app/api/testimony/add',formData);
                 if(request.status === 200){
                     alert("Testimony Added Successfully");
                     navigate('/dash');

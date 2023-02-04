@@ -15,7 +15,7 @@ const Form = () => {
         e.preventDefault();
         if(email !== null || fname !== null || lname !== null || password !== null || cpassword !== null || phone !== null || country !== null){
             try{
-                const request = await axios.post('http://localhost:5000/api/auth/register',{
+                const request = await axios.post('https://doeclient-production.up.railway.app/api/auth/register',{
                     email:email,
                     fname:fname,
                     lname:lname,
@@ -45,7 +45,7 @@ const Form = () => {
         e.preventDefault();
         if(email !== null ||  password !== null){
             try{
-                const request = await axios.post('http://localhost:5000/api/auth/login',{
+                const request = await axios.post('https://doeclient-production.up.railway.app/api/auth/login',{
                     email:email,
                     password:password,
                 });
