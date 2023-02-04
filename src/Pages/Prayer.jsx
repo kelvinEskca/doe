@@ -40,7 +40,6 @@ const Prayer = () => {
 
     return (
         <main className="main">
-
             {user && Object.keys(user).length > 0 ? (
                 <section className="section auth-section test-section">
                     <div className="wrapper">
@@ -66,10 +65,7 @@ const Prayer = () => {
                 </section>
             ) : (
                 <Form/>
-            )}
-            
-
-            
+            )}            
         </main>
     );
 }
