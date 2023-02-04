@@ -53,7 +53,7 @@ const Form = () => {
                     localStorage.setItem("token", request.data.accessToken);
                     localStorage.setItem("user",JSON.stringify(request.data));
                     alert("Login Successful");
-                    navigate('/dash');
+                    navigate('/profile');
                 }
                 else{
                     alert(request.statusMessage);

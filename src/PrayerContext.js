@@ -10,8 +10,7 @@ export function PrayerProvider({children}){
   useEffect(() => {
     const grabPrayer = async () =>{
         try {
-            const request = await axios.get('http://localhost:5000/api/prayer');
-            console.log(request);
+            const request = await axios.get('https://doeclient-production.up.railway.app/api/prayer');
             if(request.status === 200){
               setCurrentPrayers(request.data);
             }

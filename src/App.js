@@ -5,7 +5,8 @@ import {
   Link,
   Route,
   Outlet,
-  RouterProvider
+  RouterProvider,
+  useNavigate
 } from "react-router-dom";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
@@ -16,9 +17,8 @@ import Prayer from "./Pages/Prayer";
 import Profile from "./Pages/Profile";
 import ProtectedRoute from "./ProtectedRoute";
 import { PrayerProvider } from "./PrayerContext";
+import Login from "./Pages/Login";
 const user = JSON.parse(localStorage.getItem('user'));
-
-
 const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -27,8 +27,9 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
-        <Route path="/dash" element={<ProtectedRoute><Dash /></ProtectedRoute>} />
-        <Route path="/prayer" element={<ProtectedRoute><Prayer /></ProtectedRoute>} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dash" element={<Dash />} />
+        <Route path="/prayer" element={<Prayer />} />
         <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
       </Route>
     )
@@ -48,11 +49,12 @@ const Root = () => {
   const handleNav = () => {
     setNav(!nav);
   };
-  
+
+  const navigate = useNavigate();
   const logout = () => {
     if(user){
       localStorage.removeItem("user");
-      window.location.assign('/');
+      navigate('/');
     }
     else{
       alert('User not logged in!!');
@@ -136,7 +138,7 @@ const Root = () => {
               <Link to="/about">About</Link>
               <Link to="/services">Services</Link>
             </ul>
-            <Link to="/prayer">
+            <Link to="/">
               <button className="purple">Get Started</button>
             </Link>
             </>

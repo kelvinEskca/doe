@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import {useNavigate} from 'react-router-dom';
 import axios from "axios";
 import Form from "../Components/FormModal";
@@ -7,7 +7,7 @@ const Prayer = () => {
     const navigate = useNavigate();
     const [subject,setSubject] = useState(null);
     const [prayer,setPrayer] = useState(null);
-    const user = JSON.parse(localStorage.getItem('user')) || {};
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || {});
 
     const formData = {
         subject:subject,
@@ -15,6 +15,10 @@ const Prayer = () => {
         fname:user.fname,
         lname:user.lname
     }
+
+    useEffect(() => {
+        setUser(JSON.parse(localStorage.getItem('user')) || {})
+    }, [])
 
     const handleForm = async (e) =>{
         e.preventDefault();
